@@ -47,10 +47,10 @@ if (isset($_POST['login'])) {
           $userCount = $stmt->rowCount();
           if ($userCount == 1) {
             $_SESSION["username"] = $username;
-            // $_SESSION["password"] = $password;
-            // $_SESSION["token"] = $token;
+            $_SESSION["password"] = $password;
+            $_SESSION["token"] = $token;
 
-            header('Location:./download-page/index.php');
+            header('Location:./download-page/down-load.php');
           } else {
             $usernameUser = $username;
 
