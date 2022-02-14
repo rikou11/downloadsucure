@@ -1,3 +1,9 @@
+<?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+// include '../config/connection.php';
+include '../config/interdit.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
