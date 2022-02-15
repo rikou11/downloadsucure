@@ -10,13 +10,15 @@ include 'validation/login-validation.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" media="all">
+
     <!-- tailwind css and Alpine.js -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
     <title>SecureDownload</title>
 </head>
 
-<body>
+<body style="font-family: Inter" class="scroll-smooth bg-white">
     <section class="text-gray-600 body-font">
         <form method="POST" class="container px-5 py-24 mx-auto flex flex-wrap items-center">
             <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
