@@ -26,11 +26,11 @@ function test_input($data)
 if (isset($_POST['login'])) {
   $username = test_input($_POST["username"]);
   $password = test_input($_POST['password']);
-
+  $login = true;
   if (!empty($username) && !empty($password)) {
 
     try {
-      $sql = "SELECT username from users WHERE username=:username";
+      $sql = "SELECT username from users WHERE username=:username ";
       $stmt = $pdo->prepare($sql);
       $stmt->bindParam('username', $username, PDO::PARAM_STR);
       $stmt->execute();
@@ -38,10 +38,11 @@ if (isset($_POST['login'])) {
       if ($coutUsername == 1) {
 
         try {
-          $sql = "SELECT * FROM users WHERE username = :username AND password = :password";
+          $sql = "SELECT * FROM users WHERE username = :username AND password = :password AND login=:login";
           $stmt = $pdo->prepare($sql);
           $stmt->bindParam('username', $username, PDO::PARAM_STR);
           $stmt->bindValue('password', $password, PDO::PARAM_STR);
+          $stmt->bindParam('login', $login, PDO::PARAM_STR);
           // $stmt->execute(['username' => $username, 'password' => $password]);
           $stmt->execute();
           $userCount = $stmt->rowCount();
@@ -49,11 +50,22 @@ if (isset($_POST['login'])) {
             $_SESSION["username"] = $username;
             $_SESSION["password"] = $password;
             $_SESSION["token"] = $token;
+            $loginz = false;
+            try {
+              $sqlupdate = "UPDATE `users` SET `login` = '0' = :login WHERE username = :username";
+              $stmt = $pdo->prepare($sqlupdate);
+              $stmt->execute(['login' => $loginz, 'username' => $username]);
+              echo 'Post Updated';
+            } catch (PDOException $e) {
+              echo 'Error :' . $e->getMessage();
+            }
+
+
 
             header('Location:./download-page/down-load.php');
           } else {
-            $usernameUser = $username;
 
+            $usernameUser = $username;
             $err_password = ' <div class="flex items-center mt-1 text-red-700">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +83,14 @@ if (isset($_POST['login'])) {
                       </div>
                 
                     </div>';
+            echo '<div class=" z-30 bg-white pb-6 sm:pb-8 lg:pb-12">
+                    <!-- banner - start -->
+                    <div class="flex z-30 flex-wrap sm:flex-nowrap sm:justify-center sm:items-center bg-red-500 relative sm:gap-3 px-4 sm:pr-8 ms:px-8 py-3">
+                      <div class="order-1 sm:order-none w-11/12 sm:w-auto max-w-screen-sm inline-block text-white text-sm md:text-base mb-2 sm:mb-0">Error ,Password incorrect ou bien vous avez déja connecté a votre compte !</div>
+                      <a href="#" z-30 class="order-last sm:order-none w-full sm:w-auto inline-block bg-red-800 hover:bg-red-700 active:bg-red-400 focus-visible:ring ring-indigo-300 text-white text-xs md:text-sm font-semibold text-center whitespace-nowrap rounded-lg outline-none transition duration-100 px-4 py-2">en savoir plus</a>
+                    </div>
+                    <!-- banner - end -->
+                  </div>';
           }
         } catch (PDOException $e) {
           echo 'Error :' . $e->getMessage();
@@ -99,11 +119,11 @@ if (isset($_POST['login'])) {
       echo "Error : " . $e->getMessage();
     }
   } else {
-    echo '<div class="bg-white pb-6 sm:pb-8 lg:pb-12">
+    echo '<div class=" z-30 bg-white pb-6 sm:pb-8 lg:pb-12">
         <!-- banner - start -->
-        <div class="flex flex-wrap sm:flex-nowrap sm:justify-center sm:items-center bg-red-500 relative sm:gap-3 px-4 sm:pr-8 ms:px-8 py-3">
+        <div class="flex z-30 flex-wrap sm:flex-nowrap sm:justify-center sm:items-center bg-red-500 relative sm:gap-3 px-4 sm:pr-8 ms:px-8 py-3">
           <div class="order-1 sm:order-none w-11/12 sm:w-auto max-w-screen-sm inline-block text-white text-sm md:text-base mb-2 sm:mb-0">Error ,Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, fugiat! </div>
-          <a href="#" class="order-last sm:order-none w-full sm:w-auto inline-block bg-red-700 hover:bg-indigo-700 active:bg-indigo-800 focus-visible:ring ring-indigo-300 text-white text-xs md:text-sm font-semibold text-center whitespace-nowrap rounded-lg outline-none transition duration-100 px-4 py-2">Learn more</a>
+          <a href="#" z-30 class="order-last sm:order-none w-full sm:w-auto inline-block bg-red-800 hover:bg-red-700 active:bg-red-400 focus-visible:ring ring-indigo-300 text-white text-xs md:text-sm font-semibold text-center whitespace-nowrap rounded-lg outline-none transition duration-100 px-4 py-2">en savoir plus</a>
         </div>
         <!-- banner - end -->
       </div>';

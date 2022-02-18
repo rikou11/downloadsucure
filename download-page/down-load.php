@@ -35,7 +35,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 </head>
 
 <body style="font-family: Inter" class="scroll-smooth bg-white 	">
-    <nav class="flex items-center justify-between font-bold flex-wrap px-6 py-3 fixed w-full z-10 top-0" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-red-600' : isOpen , 'bg-[<?php echo $color; ?>] ' : !isOpen}">
+    <nav class="flex items-center justify-between font-bold flex-wrap px-6 py-3 fixed w-full z-40 top-0" x-data="{ isOpen: false }" @keydown.escape="isOpen = false" :class="{ 'shadow-lg bg-gray-600' : isOpen , 'bg-[<?php echo $color; ?>] ' : !isOpen}">
         <!--Logo etc-->
         <div class="flex items-center flex-shrink-0 text-white mr-6">
             <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
@@ -55,22 +55,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         <!--Menu-->
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto" :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }" @click.away="isOpen = false" x-show.transition="true">
             <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4 text-white no-underline" href="#" @click="isOpen = false">
-                    </a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#" @click="isOpen = false">
-                    </a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#" @click="isOpen = false">
-                    </a>
-                </li>
+
                 <li class="mr-3">
                     <form method="post">
                         <button name='logout' class="text-red-500 hover:text-white py-2 px-4  rounded bg-white border border-red-500 hover:bg-red-600 shadow-none hover:shadow-lg font-medium transition duration-200" href="#" @click="isOpen = false">
-                            Logout
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnecter
                         </button>
                     </form>
                 </li>
@@ -81,13 +70,14 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     <!--Container for content-->
     <div class="container mx-auto bg-white mt-24 md:mt-18">
 
+
         <div class="bg-white py-6 sm:py-8 lg:py-12">
             <div class="max-w-screen-lg px-4 md:px-8 mx-auto">
                 <div class="grid sm:grid-cols-2 gap-8">
                     <!-- content - start -->
-                    <div class="flex flex-col justify-center items-center sm:items-start md:py-24 lg:py-32">
+                    <div class="flex flex-col z-10 justify-center items-center sm:items-start md:py-24 lg:py-32">
 
-                        <h1 class="text-gray-800 text-2xl md:text-3xl font-bold text-center sm:text-left mb-2">Bienvenue dans <span class="text-red-500">GDS pro</span> </h1>
+                        <h1 class="text-gray-800 text-2xl md:text-3xl font-bold text-center sm:text-left mb-2">Bienvenue dans <span class="text-[<?php echo $color ?>]"><?php echo $file ?></span> </h1>
 
                         <p class="text-gray-500 md:text-lg text-center sm:text-left mb-8">Votre lien de téléchargement </p>
 
@@ -97,11 +87,55 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       text-sm md:text-base font-semibold text-center rounded-lg outline-none
                        transition duration-100 px-8 py-3">Télécharger <i class="fa-solid fa-download"></i> </a>
                     </div>
+                    <!-- shapes -->
+                    <svg class="absolute z-0  w-full " xmlns="http://www.w3.org/2000/svg" width="781.573" height="600.004" viewBox="0 0 781.573 600.004">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    opacity: 0.19;
+                                }
+
+                                .cls-2 {
+                                    fill: <?php echo $color ?>;
+                                }
+                            </style>
+                        </defs>
+                        <g id="Group_1" data-name="Group 1" class="cls-1" transform="matrix(1, 0.017, -0.017, 1, 6.385, -6.444)">
+                            <ellipse id="Ellipse_1" data-name="Ellipse 1" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(725.424 307.238)" />
+                            <path id="Path_1" data-name="Path 1" class="cls-2" d="M154.8,120.309a31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7Z" transform="translate(489.682 150.808)" />
+                            <path id="Path_2" data-name="Path 2" class="cls-2" d="M142.705,109.209a31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.1,0,21.655,21.655,0,0,0,0,33.7Z" transform="translate(412.689 85.098)" />
+                            <path id="Path_3" data-name="Path 3" class="cls-2" d="M130.75,98.109a31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7Z" transform="translate(335.63 19.389)" />
+                            <ellipse id="Ellipse_2" data-name="Ellipse 2" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(369.221 0)" />
+                            <path id="Path_4" data-name="Path 4" class="cls-2" d="M154.36,142.909a31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7Z" transform="translate(486.864 284.595)" />
+                            <ellipse id="Ellipse_3" data-name="Ellipse 3" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(544.064 310.006)" />
+                            <path id="Path_5" data-name="Path 5" class="cls-2" d="M130.31,120.719a31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7Z" transform="translate(332.812 153.235)" />
+                            <path id="Path_6" data-name="Path 6" class="cls-2" d="M118.29,109.583a30.717,30.717,0,0,0,39.027,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.027,0,21.53,21.53,0,0,0,0,33.7Z" transform="translate(255.818 87.492)" />
+                            <ellipse id="Ellipse_4" data-name="Ellipse 4" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(276.948 79.577)" />
+                            <path id="Path_7" data-name="Path 7" class="cls-2" d="M141.825,154.419a31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7,31.2,31.2,0,0,0-39.1,0,21.654,21.654,0,0,0,0,33.7Z" transform="translate(407.052 352.731)" />
+                            <ellipse id="Ellipse_5" data-name="Ellipse 5" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(451.792 389.653)" />
+                            <path id="Path_8" data-name="Path 8" class="cls-2" d="M117.85,132.313a30.717,30.717,0,0,0,39.027,0,21.53,21.53,0,0,0,0-33.7,30.717,30.717,0,0,0-39.027,0,21.53,21.53,0,0,0,0,33.7Z" transform="translate(253 221.218)" />
+                            <ellipse id="Ellipse_6" data-name="Ellipse 6" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(273.69 236.034)" />
+                            <path id="Path_9" data-name="Path 9" class="cls-2" d="M132.9,76.32a31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7,31.2,31.2,0,0,0,39.1,0,21.654,21.654,0,0,0,0-33.7Z" transform="translate(98.948 89.893)" />
+                            <path id="Path_10" data-name="Path 10" class="cls-2" d="M129.4,165.988a31.2,31.2,0,0,0,39.1,0,21.657,21.657,0,0,0,0-33.769,31.2,31.2,0,0,0-39.1,0,21.657,21.657,0,0,0,0,33.769Z" transform="translate(327.204 420.809)" />
+                            <ellipse id="Ellipse_7" data-name="Ellipse 7" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(359.445 469.23)" />
+                            <ellipse id="Ellipse_8" data-name="Ellipse 8" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(270.432 392.42)" />
+                            <path id="Path_11" data-name="Path 11" class="cls-2" d="M93.331,132.688a31.2,31.2,0,0,0,39.1,0,21.719,21.719,0,0,0,0-33.768,31.2,31.2,0,0,0-39.1,0,21.657,21.657,0,0,0,0,33.768Z" transform="translate(96.159 223.68)" />
+                            <path id="Path_12" data-name="Path 12" class="cls-2" d="M120.4,87.82a31.2,31.2,0,0,0-39.1,0,21.657,21.657,0,0,0,0,33.768,31.2,31.2,0,0,0,39.1,0,21.657,21.657,0,0,0,0-33.768Z" transform="translate(19.101 157.971)" />
+                            <path id="Path_13" data-name="Path 13" class="cls-2" d="M156,177.523a21.53,21.53,0,0,0,0-33.7,30.717,30.717,0,0,0-39.027,0,21.53,21.53,0,0,0,0,33.7A30.717,30.717,0,0,0,156,177.523Z" transform="translate(247.363 488.851)" />
+                            <ellipse id="Ellipse_9" data-name="Ellipse 9" class="cls-2" cx="27.622" cy="23.873" rx="27.622" ry="23.873" transform="translate(267.173 548.877)" />
+                            <path id="Path_14" data-name="Path 14" class="cls-2" d="M132.021,121.53a31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7,31.2,31.2,0,0,0,39.1,0,21.654,21.654,0,0,0,0-33.7Z" transform="translate(93.312 357.526)" />
+                            <path id="Path_15" data-name="Path 15" class="cls-2" d="M119.991,110.43a31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7,31.2,31.2,0,0,0,39.1,0,21.53,21.53,0,0,0,0-33.7Z" transform="translate(16.254 291.817)" />
+                            <path id="Path_16" data-name="Path 16" class="cls-2" d="M107.971,99.33a31.2,31.2,0,0,0-39.1,0,21.53,21.53,0,0,0,0,33.7,31.2,31.2,0,0,0,39.1,0,21.655,21.655,0,0,0,0-33.7Z" transform="translate(-60.74 226.107)" />
+                        </g>
+                    </svg>
+
+
+
                     <!-- content - end -->
 
                     <!-- image - start -->
                     <div class="h-80 md:h-auto bg-gray-100 overflow-hidden shadow-lg rounded-lg relative">
-                        <svg class="h-full w-full bg-yellow-50" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="733.86247" height="702.19479" viewBox="0 0 733.86247 702.19479" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <svg class="h-full w-full bg-gray-50" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="733.86247" height="702.19479" viewBox="0 0 733.86247 702.19479" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>cloud_files</title>
                             <path d="M257.07474,533.1599a1.11537,1.11537,0,0,1-.23571-.46222,351.19117,351.19117,0,0,1,478.94006-405.746,1.11976,1.11976,0,1,1-.87626,2.061C612.32539,76.89059,473.23316,98.13255,371.90572,184.44937,271.19684,270.23927,227.9405,403.478,259.01686,532.17137a1.12007,1.12007,0,0,1-1.94212.98853Z" transform="translate(-233.06876 -98.90261)" fill="#e6e6e6" />
                             <path d="M461.79585,773.48566a1.11976,1.11976,0,0,1,1.28506-1.75985C585.19759,822.86767,723.62042,801.34331,824.331,715.552,926.61163,628.42316,970.04606,494.49037,937.6846,366.02043a1.12,1.12,0,0,1,2.17242-.54614,346.59614,346.59614,0,0,1-5.75077,189.35434A353.6721,353.6721,0,0,1,825.78337,717.257a351.07362,351.07362,0,0,1-363.569,56.53446A1.113,1.113,0,0,1,461.79585,773.48566Z" transform="translate(-233.06876 -98.90261)" fill="#e6e6e6" />
@@ -124,6 +158,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 </div>
             </div>
         </div>
+
+
     </div>
 
 
